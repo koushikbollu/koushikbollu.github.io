@@ -5,48 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sai Koushik Bollu — Portfolio</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 40px 20px 60px; }
-  header { text-align: center; padding: 36px 0 10px; }
-  header h1 { font-size: 2.2rem; letter-spacing: .3px; }
-  header .role { color: #58a6ff; font-size: 1.05rem; margin-top: 6px; }
-  header .meta { color: #9da7b1; margin-top: 8px; font-size: .95rem; }
-  .links { margin-top: 16px; }
-  .links a { color: #58a6ff; text-decoration: none; margin: 0 10px; font-size: .95rem; }
-  .links a:hover { text-decoration: underline; }
-  h2 { font-size: 1.35rem; margin: 38px 0 14px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
-  .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 22px; margin-bottom: 20px; }
-  .card h3 { font-size: 1.15rem; color: #f0f6fc; }
-  .card p { color: #c9d1d9; margin-top: 8px; }
-  .tags { margin-top: 12px; }
-  .tag { display: inline-block; background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb55; border-radius: 20px; padding: 2px 10px; font-size: .8rem; margin: 3px 4px 3px 0; }
-  .metrics { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
-  .metric { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 10px 16px; text-align: center; }
-  .metric .num { font-size: 1.25rem; font-weight: 700; color: #3fb950; }
-  .metric .lbl { font-size: .78rem; color: #9da7b1; }
-  .btn { display: inline-block; margin-top: 14px; background: #238636; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: .9rem; }
-  .btn:hover { background: #2ea043; }
-  ul.feat { margin: 10px 0 0 18px; color: #c9d1d9; }
-  footer { text-align: center; color: #6e7681; font-size: .85rem; margin-top: 44px; }
+  :root{
+    --bg:#070b14; --card:#0e1626cc; --line:#1e2c47; --txt:#e8eef7; --mut:#93a4bd;
+    --a1:#38bdf8; --a2:#818cf8; --a3:#34d399; --grad:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden}
+  /* animated background */
+  .bg{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(700px 400px at 15% 10%, #1d4ed833, transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, #7c3aed2b, transparent 60%),
+    radial-gradient(700px 600px at 50% 95%, #05966924, transparent 60%), var(--bg)}
+  .blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;z-index:-1;animation:drift 16s ease-in-out infinite alternate}
+  .b1{width:340px;height:340px;background:#2563eb;top:-80px;left:-60px}
+  .b2{width:300px;height:300px;background:#7c3aed;top:30%;right:-90px;animation-delay:-6s}
+  .b3{width:260px;height:260px;background:#059669;bottom:-80px;left:35%;animation-delay:-11s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,36px) scale(1.12)}}
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#070b14b8;border-bottom:1px solid var(--line)}
+  .navin{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:800;font-size:1.05rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav a{color:var(--mut);text-decoration:none;margin-left:20px;font-size:.93rem;transition:color .25s}
+  nav a:hover{color:#fff}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
+  /* hero */
+  header{text-align:center;padding:74px 0 30px}
+  .avatar{width:104px;height:104px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);border:3px solid #ffffff2e;box-shadow:0 0 0 6px #2563eb22,0 18px 40px #0009;animation:float 5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  h1{font-size:2.7rem;line-height:1.15;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .typed{font-size:1.2rem;color:#dbe7f5;margin-top:12px;min-height:1.7em}
+  .typed .cur{display:inline-block;width:2px;background:var(--a1);margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .meta{color:var(--mut);margin-top:8px}
+  .cta{margin-top:26px}
+  .btn{display:inline-block;padding:11px 22px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95rem;margin:4px;transition:transform .25s,box-shadow .25s}
+  .btn:hover{transform:translateY(-3px)}
+  .btn.p{background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;box-shadow:0 10px 26px #2563eb45}
+  .btn.g{background:#ffffff10;color:#fff;border:1px solid var(--line)}
+  .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:140px;transition:transform .3s,border-color .3s}
+  .stat:hover{transform:translateY(-4px);border-color:var(--a2)}
+  .stat .num{font-size:1.55rem;font-weight:800;color:var(--a3)}
+  .stat .lbl{font-size:.8rem;color:var(--mut)}
+  /* sections */
+  h2{font-size:1.5rem;margin:52px 0 18px;display:flex;align-items:center;gap:12px}
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:22px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);opacity:0;transition:opacity .35s}
+  .card:hover{transform:translateY(-6px);border-color:#35507e;box-shadow:0 22px 44px #000a}
+  .card:hover::before{opacity:1}
+  .card h3{font-size:1.25rem}
+  .card p{color:#c6d3e4;margin-top:8px}
+  ul.feat{margin:12px 0 0 20px;color:#c6d3e4}
+  ul.feat li{margin:4px 0}
+  .tags{margin-top:14px}
+  .tag{display:inline-block;background:#38bdf814;color:#7dd3fc;border:1px solid #38bdf83d;border-radius:20px;padding:3px 12px;font-size:.8rem;margin:3px 4px 3px 0;transition:transform .2s,background .2s}
+  .tag:hover{transform:scale(1.08);background:#38bdf82b}
+  .metrics{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+  .metric{background:#0a1220;border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center}
+  .metric .num{font-size:1.4rem;font-weight:800;color:var(--a3)}
+  .metric .lbl{font-size:.78rem;color:var(--mut)}
+  .gbtn{display:inline-block;margin-top:16px;background:#238636;color:#fff;padding:9px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .25s,background .25s}
+  .gbtn:hover{background:#2ea043;transform:translateY(-2px)}
+  .access{margin-top:12px;font-size:.9rem;color:var(--mut)}
+  /* reveal on scroll */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  footer{text-align:center;color:#5f7089;font-size:.87rem;margin-top:56px}
+  footer a{color:var(--a1);text-decoration:none}
+  @media(max-width:560px){h1{font-size:2rem}.typed{font-size:1.02rem}nav a{margin-left:12px}}
 </style>
 </head>
 <body>
+<div class="bg"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<nav><div class="navin">
+  <div class="logo">SKB · Portfolio</div>
+  <div>
+    <a href="#project-1">Projects</a><a href="#skills">Skills</a><a href="https://github.com/koushikbollu">GitHub</a><a href="https://www.linkedin.com/in/koushikbollu">LinkedIn</a>
+  </div>
+</div></nav>
+
 <div class="wrap">
   <header>
+    <div class="avatar">SKB</div>
     <h1>Sai Koushik Bollu</h1>
-    <div class="role">Python Developer · AI/ML Engineer (Fresher, B.Tech ECE 2026)</div>
+    <div class="typed"><span id="ty"></span><span class="cur">&nbsp;</span></div>
     <div class="meta">Hyderabad, Telangana, India · saikoushikbollu@gmail.com</div>
-    <div class="links">
-      <a href="https://github.com/koushikbollu">GitHub</a>·
-      <a href="https://www.linkedin.com/in/koushikbollu">LinkedIn</a>
+    <div class="cta">
+      <a class="btn p" href="#project-1">View Projects ↓</a>
+      <a class="btn g" href="https://github.com/koushikbollu">GitHub Profile</a>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><div class="num"><span class="count" data-to="98.28" data-dec="2">0</span>%</div><div class="lbl">Accident Detection Accuracy</div></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="97.15" data-dec="2">0</span>%</div><div class="lbl">Precision</div></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="99.03" data-dec="2">0</span>%</div><div class="lbl">Recall</div></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="7.94" data-dec="2">0</span></div><div class="lbl">B.Tech CGPA</div></div>
     </div>
   </header>
 
-  <h2>Projects</h2>
+  <h2 class="rv">Projects</h2>
 
-  <div class="card" id="project-1">
-    <h3>1. Voice Assistant using Python</h3>
+  <div class="card rv" id="project-1">
+    <h3>🎙️ 1. Voice Assistant using Python</h3>
     <p>A desktop voice assistant that listens to voice commands through the microphone, converts speech to text, performs tasks, and replies with synthesized speech.</p>
     <ul class="feat">
       <li>Performs web searches from voice commands</li>
@@ -54,16 +116,13 @@
       <li>Greets the user, reads news headlines aloud, and reports system (CPU) status</li>
       <li>Speech recognition with SpeechRecognition; text-to-speech replies with pyttsx3</li>
     </ul>
-    <div class="tags">
-      <span class="tag">Python</span><span class="tag">SpeechRecognition</span><span class="tag">pyttsx3</span><span class="tag">Automation</span>
-    </div>
-    <br>
-    <a class="btn" href="https://github.com/koushikbollu/voice-assistant">View code on GitHub</a>
-    <p style="margin-top:12px; font-size:.9rem; color:#9da7b1;">Access: runs locally on a PC — download the code from GitHub, install the requirements, and run it with a microphone connected. No login needed.</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">SpeechRecognition</span><span class="tag">pyttsx3</span><span class="tag">Automation</span></div>
+    <br><a class="gbtn" href="https://github.com/koushikbollu/voice-assistant">View code on GitHub</a>
+    <p class="access">Access: runs locally on a PC — download the code from GitHub, install the requirements, and run it with a microphone connected. No login needed.</p>
   </div>
 
-  <div class="card" id="project-2">
-    <h3>2. Automatic Accident Detection Using Deep Learning</h3>
+  <div class="card rv" id="project-2">
+    <h3>🚨 2. Automatic Accident Detection Using Deep Learning</h3>
     <p>A deep-learning system that detects road accidents from images and sends an instant alert, with the accident photo, to Telegram.</p>
     <ul class="feat">
       <li>Cleaned accident dataset prepared with train / valid / test splits (accident and non-accident classes), YOLO labels generated and images resized</li>
@@ -72,26 +131,54 @@
       <li>Automatic Telegram alert message and accident photo via the Telegram Bot API</li>
     </ul>
     <div class="metrics">
-      <div class="metric"><div class="num">98.28%</div><div class="lbl">Accuracy</div></div>
-      <div class="metric"><div class="num">97.15%</div><div class="lbl">Precision</div></div>
-      <div class="metric"><div class="num">99.03%</div><div class="lbl">Recall</div></div>
+      <div class="metric"><div class="num"><span class="count" data-to="98.28" data-dec="2">0</span>%</div><div class="lbl">Accuracy</div></div>
+      <div class="metric"><div class="num"><span class="count" data-to="97.15" data-dec="2">0</span>%</div><div class="lbl">Precision</div></div>
+      <div class="metric"><div class="num"><span class="count" data-to="99.03" data-dec="2">0</span>%</div><div class="lbl">Recall</div></div>
     </div>
-    <div class="tags">
-      <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span><span class="tag">Telegram Bot API</span><span class="tag">Google Colab</span>
-    </div>
-    <br>
-    <a class="btn" href="https://github.com/koushikbollu/accident-detection">View code on GitHub</a>
-    <p style="margin-top:12px; font-size:.9rem; color:#9da7b1;">Access: runs in Google Colab / locally — open the GitHub repo, run accident_detection.py, and set your own Telegram BOT_TOKEN and CHAT_ID to receive alerts. Sample outputs are in output_photos.pdf in the repo. The dataset (about 1.3 GB) is not hosted because of file-size limits.</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span><span class="tag">Telegram Bot API</span><span class="tag">Google Colab</span></div>
+    <br><a class="gbtn" href="https://github.com/koushikbollu/accident-detection">View code on GitHub</a>
+    <p class="access">Access: runs in Google Colab / locally — open the GitHub repo, run accident_detection.py, and set your own Telegram BOT_TOKEN and CHAT_ID to receive alerts. Sample outputs are in output_photos.pdf in the repo. The dataset (about 1.3 GB) is not hosted because of file-size limits.</p>
   </div>
 
-  <h2>Skills</h2>
-  <div class="card">
+  <h2 class="rv" id="skills">Skills</h2>
+  <div class="card rv">
     <div class="tags">
       <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">CNNs</span><span class="tag">YOLOv5 / YOLOv8</span><span class="tag">ResNet50</span><span class="tag">OpenCV</span><span class="tag">DSA</span><span class="tag">OOP</span><span class="tag">HTML / CSS</span><span class="tag">Power BI</span><span class="tag">Arduino</span>
     </div>
   </div>
 
-  <footer>© 2026 Sai Koushik Bollu · B.Tech ECE, Vignan's Foundation for Science, Technology &amp; Research (2022–2026)</footer>
+  <footer>
+    © 2026 Sai Koushik Bollu · B.Tech ECE, Vignan's Foundation for Science, Technology &amp; Research (2022–2026)<br>
+    <a href="https://github.com/koushikbollu">github.com/koushikbollu</a> · <a href="https://www.linkedin.com/in/koushikbollu">linkedin.com/in/koushikbollu</a>
+  </footer>
 </div>
+
+<script>
+  // typing effect
+  const roles = ["Python Developer", "AI/ML Engineer", "Computer Vision Enthusiast", "B.Tech ECE · Class of 2026"];
+  const ty = document.getElementById('ty');
+  let ri = 0, ci = 0, del = false;
+  (function tick(){
+    const word = roles[ri];
+    ty.textContent = word.slice(0, ci);
+    if(!del){ ci++; if(ci > word.length){ del = true; return setTimeout(tick, 1500); } }
+    else { ci--; if(ci === 0){ del = false; ri = (ri + 1) % roles.length; } }
+    setTimeout(tick, del ? 34 : 68);
+  })();
+  // reveal on scroll + count-up
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if(!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('.count').forEach(el => {
+      if(el.dataset.done) return; el.dataset.done = 1;
+      const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0), t0 = performance.now();
+      (function step(t){ const p = Math.min((t - t0) / 1400, 1);
+        el.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec);
+        if(p < 1) requestAnimationFrame(step); })(t0);
+    });
+    io.unobserve(e.target);
+  }), {threshold: .18});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
