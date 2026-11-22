@@ -6,79 +6,101 @@
 <title>Sai Koushik Bollu — Portfolio</title>
 <style>
   :root{
-    --bg:#070b14; --card:#0e1626cc; --line:#1e2c47; --txt:#e8eef7; --mut:#93a4bd;
-    --a1:#38bdf8; --a2:#818cf8; --a3:#34d399; --grad:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
+    --bg:#060a13; --card:#0d1524e6; --line:#1e2c47; --txt:#e8eef7; --mut:#93a4bd;
+    --a1:#38bdf8; --a2:#818cf8; --a3:#34d399;
+    --grad:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc,#38bdf8);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden}
-  /* animated background */
-  .bg{position:fixed;inset:0;z-index:-2;background:
-    radial-gradient(700px 400px at 15% 10%, #1d4ed833, transparent 60%),
-    radial-gradient(800px 500px at 85% 20%, #7c3aed2b, transparent 60%),
-    radial-gradient(700px 600px at 50% 95%, #05966924, transparent 60%), var(--bg)}
-  .blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;z-index:-1;animation:drift 16s ease-in-out infinite alternate}
+  /* particle canvas + glow layers */
+  #stars{position:fixed;inset:0;z-index:-3}
+  .bg{position:fixed;inset:0;z-index:-4;background:
+    radial-gradient(700px 400px at 15% 10%, #1d4ed82e, transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, #7c3aed26, transparent 60%),
+    radial-gradient(700px 600px at 50% 95%, #0596691f, transparent 60%), var(--bg)}
+  #glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-2;
+    background:radial-gradient(circle,#6366f12b,transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s;left:50%;top:30%}
+  .blob{position:fixed;border-radius:50%;filter:blur(75px);opacity:.32;z-index:-1;animation:drift 16s ease-in-out infinite alternate;will-change:transform}
   .b1{width:340px;height:340px;background:#2563eb;top:-80px;left:-60px}
-  .b2{width:300px;height:300px;background:#7c3aed;top:30%;right:-90px;animation-delay:-6s}
+  .b2{width:300px;height:300px;background:#7c3aed;top:32%;right:-90px;animation-delay:-6s}
   .b3{width:260px;height:260px;background:#059669;bottom:-80px;left:35%;animation-delay:-11s}
-  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,36px) scale(1.12)}}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(56px,40px) scale(1.14)}}
+  /* scroll progress */
+  #prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);background-size:200% 100%;animation:slide 5s linear infinite;z-index:99}
+  @keyframes slide{to{background-position:200% 0}}
   /* nav */
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#070b14b8;border-bottom:1px solid var(--line)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#060a13b8;border-bottom:1px solid var(--line)}
   .navin{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-  .logo{font-weight:800;font-size:1.05rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  nav a{color:var(--mut);text-decoration:none;margin-left:20px;font-size:.93rem;transition:color .25s}
-  nav a:hover{color:#fff}
+  .logo{font-weight:800;font-size:1.05rem;background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 6s linear infinite}
+  nav a{color:var(--mut);text-decoration:none;margin-left:20px;font-size:.93rem;position:relative;transition:color .25s}
+  nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--grad);transition:width .3s}
+  nav a:hover{color:#fff} nav a:hover::after{width:100%}
   .wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
   /* hero */
-  header{text-align:center;padding:74px 0 30px}
-  .avatar{width:104px;height:104px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);border:3px solid #ffffff2e;box-shadow:0 0 0 6px #2563eb22,0 18px 40px #0009;animation:float 5s ease-in-out infinite}
+  header{text-align:center;padding:70px 0 26px}
+  .avatar{width:106px;height:106px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);border:3px solid #ffffff2e;box-shadow:0 0 0 6px #2563eb22,0 18px 40px #0009;animation:float 5s ease-in-out infinite;cursor:pointer;transition:transform .3s}
+  .avatar:hover{transform:scale(1.07) rotate(-3deg)}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  h1{font-size:2.7rem;line-height:1.15;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-size:2.75rem;line-height:1.15;background:var(--grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 7s linear infinite}
   .typed{font-size:1.2rem;color:#dbe7f5;margin-top:12px;min-height:1.7em}
   .typed .cur{display:inline-block;width:2px;background:var(--a1);margin-left:2px;animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   .meta{color:var(--mut);margin-top:8px}
   .cta{margin-top:26px}
-  .btn{display:inline-block;padding:11px 22px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95rem;margin:4px;transition:transform .25s,box-shadow .25s}
+  .btn{display:inline-block;padding:11px 22px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95rem;margin:4px;transition:transform .25s,box-shadow .25s;will-change:transform}
   .btn:hover{transform:translateY(-3px)}
   .btn.p{background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;box-shadow:0 10px 26px #2563eb45}
   .btn.g{background:#ffffff10;color:#fff;border:1px solid var(--line)}
   .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:140px;transition:transform .3s,border-color .3s}
-  .stat:hover{transform:translateY(-4px);border-color:var(--a2)}
+  .stat:hover{transform:translateY(-5px) scale(1.03);border-color:var(--a2)}
   .stat .num{font-size:1.55rem;font-weight:800;color:var(--a3)}
   .stat .lbl{font-size:.8rem;color:var(--mut)}
+  /* skills marquee */
+  .marquee{overflow:hidden;margin-top:40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .track{display:flex;gap:10px;width:max-content;animation:mq 26s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  .chip{background:#38bdf812;color:#7dd3fc;border:1px solid #38bdf838;border-radius:20px;padding:5px 14px;font-size:.85rem;white-space:nowrap}
   /* sections */
   h2{font-size:1.5rem;margin:52px 0 18px;display:flex;align-items:center;gap:12px}
   h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:22px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s}
-  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);opacity:0;transition:opacity .35s}
-  .card:hover{transform:translateY(-6px);border-color:#35507e;box-shadow:0 22px 44px #000a}
-  .card:hover::before{opacity:1}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:22px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .35s,box-shadow .35s;will-change:transform}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);background-size:200% 100%;opacity:0;transition:opacity .35s}
+  .card::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#818cf81f,transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
+  .card:hover{border-color:#35507e;box-shadow:0 24px 48px #000b}
+  .card:hover::before{opacity:1;animation:slide 4s linear infinite}
+  .card:hover::after{opacity:1}
   .card h3{font-size:1.25rem}
   .card p{color:#c6d3e4;margin-top:8px}
   ul.feat{margin:12px 0 0 20px;color:#c6d3e4}
   ul.feat li{margin:4px 0}
   .tags{margin-top:14px}
-  .tag{display:inline-block;background:#38bdf814;color:#7dd3fc;border:1px solid #38bdf83d;border-radius:20px;padding:3px 12px;font-size:.8rem;margin:3px 4px 3px 0;transition:transform .2s,background .2s}
-  .tag:hover{transform:scale(1.08);background:#38bdf82b}
+  .tag{display:inline-block;background:#38bdf814;color:#7dd3fc;border:1px solid #38bdf83d;border-radius:20px;padding:3px 12px;font-size:.8rem;margin:3px 4px 3px 0;transition:transform .2s,background .2s;cursor:default}
+  .tag:hover{transform:scale(1.1) rotate(-2deg);background:#38bdf82e}
   .metrics{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
-  .metric{background:#0a1220;border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center}
+  .metric{background:#0a1220;border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center;transition:transform .25s}
+  .metric:hover{transform:scale(1.06)}
   .metric .num{font-size:1.4rem;font-weight:800;color:var(--a3)}
   .metric .lbl{font-size:.78rem;color:var(--mut)}
-  .gbtn{display:inline-block;margin-top:16px;background:#238636;color:#fff;padding:9px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .25s,background .25s}
+  .gbtn{display:inline-block;margin-top:16px;background:#238636;color:#fff;padding:9px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .25s,background .25s;position:relative;overflow:hidden}
   .gbtn:hover{background:#2ea043;transform:translateY(-2px)}
   .access{margin-top:12px;font-size:.9rem;color:var(--mut)}
   /* reveal on scroll */
-  .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
   .rv.in{opacity:1;transform:none}
   footer{text-align:center;color:#5f7089;font-size:.87rem;margin-top:56px}
   footer a{color:var(--a1);text-decoration:none}
   @media(max-width:560px){h1{font-size:2rem}.typed{font-size:1.02rem}nav a{margin-left:12px}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01s !important;transition-duration:.01s !important}}
 </style>
 </head>
 <body>
-<div class="bg"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<canvas id="stars"></canvas>
+<div class="bg"></div><div id="glow"></div>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div id="prog"></div>
 
 <nav><div class="navin">
   <div class="logo">SKB · Portfolio</div>
@@ -89,13 +111,13 @@
 
 <div class="wrap">
   <header>
-    <div class="avatar">SKB</div>
+    <div class="avatar" id="av" title="Click me">SKB</div>
     <h1>Sai Koushik Bollu</h1>
     <div class="typed"><span id="ty"></span><span class="cur">&nbsp;</span></div>
     <div class="meta">Hyderabad, Telangana, India · saikoushikbollu@gmail.com</div>
     <div class="cta">
-      <a class="btn p" href="#project-1">View Projects ↓</a>
-      <a class="btn g" href="https://github.com/koushikbollu">GitHub Profile</a>
+      <a class="btn p mag" href="#project-1">View Projects ↓</a>
+      <a class="btn g mag" href="https://github.com/koushikbollu">GitHub Profile</a>
     </div>
     <div class="stats">
       <div class="stat rv"><div class="num"><span class="count" data-to="98.28" data-dec="2">0</span>%</div><div class="lbl">Accident Detection Accuracy</div></div>
@@ -103,11 +125,12 @@
       <div class="stat rv"><div class="num"><span class="count" data-to="99.03" data-dec="2">0</span>%</div><div class="lbl">Recall</div></div>
       <div class="stat rv"><div class="num"><span class="count" data-to="7.94" data-dec="2">0</span></div><div class="lbl">B.Tech CGPA</div></div>
     </div>
+    <div class="marquee rv"><div class="track" id="track"></div></div>
   </header>
 
   <h2 class="rv">Projects</h2>
 
-  <div class="card rv" id="project-1">
+  <div class="card rv tilt" id="project-1">
     <h3>🎙️ 1. Voice Assistant using Python</h3>
     <p>A desktop voice assistant that listens to voice commands through the microphone, converts speech to text, performs tasks, and replies with synthesized speech.</p>
     <ul class="feat">
@@ -121,7 +144,7 @@
     <p class="access">Access: runs locally on a PC — download the code from GitHub, install the requirements, and run it with a microphone connected. No login needed.</p>
   </div>
 
-  <div class="card rv" id="project-2">
+  <div class="card rv tilt" id="project-2">
     <h3>🚨 2. Automatic Accident Detection Using Deep Learning</h3>
     <p>A deep-learning system that detects road accidents from images and sends an instant alert, with the accident photo, to Telegram.</p>
     <ul class="feat">
@@ -154,21 +177,72 @@
 </div>
 
 <script>
-  // typing effect
-  const roles = ["Python Developer", "AI/ML Engineer", "Computer Vision Enthusiast", "B.Tech ECE · Class of 2026"];
-  const ty = document.getElementById('ty');
-  let ri = 0, ci = 0, del = false;
-  (function tick(){
-    const word = roles[ri];
-    ty.textContent = word.slice(0, ci);
-    if(!del){ ci++; if(ci > word.length){ del = true; return setTimeout(tick, 1500); } }
-    else { ci--; if(ci === 0){ del = false; ri = (ri + 1) % roles.length; } }
-    setTimeout(tick, del ? 34 : 68);
+  /* ---------- particle network background ---------- */
+  const cv = document.getElementById('stars'), cx = cv.getContext('2d');
+  let W, H, pts = [], mouse = {x: -9999, y: -9999};
+  function size(){ W = cv.width = innerWidth; H = cv.height = innerHeight;
+    const n = Math.min(90, Math.floor(W * H / 16000)); pts = [];
+    for(let i = 0; i < n; i++) pts.push({x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-.5)*.45, vy: (Math.random()-.5)*.45, r: Math.random()*1.6+.6});
+  }
+  size(); addEventListener('resize', size);
+  addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  (function draw(){
+    cx.clearRect(0, 0, W, H);
+    for(const p of pts){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0 || p.x > W) p.vx *= -1; if(p.y < 0 || p.y > H) p.vy *= -1;
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+      if(d < 110 && d > 0){ p.x += dx/d*.7; p.y += dy/d*.7; }  /* particles react to cursor */
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fillStyle = '#7dd3fcbb'; cx.fill();
+    }
+    for(let i = 0; i < pts.length; i++) for(let j = i+1; j < pts.length; j++){
+      const a = pts[i], b = pts[j], d = Math.hypot(a.x-b.x, a.y-b.y);
+      if(d < 130){ cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y);
+        cx.strokeStyle = 'rgba(99,102,241,' + (0.16*(1 - d/130)) + ')'; cx.stroke(); }
+    }
+    requestAnimationFrame(draw);
   })();
-  // reveal on scroll + count-up
+  /* ---------- cursor glow + progress bar ---------- */
+  const glow = document.getElementById('glow'), prog = document.getElementById('prog');
+  addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+  addEventListener('scroll', () => { const h = document.documentElement;
+    prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; }, {passive: true});
+  /* ---------- typing effect ---------- */
+  const roles = ["Python Developer", "AI/ML Engineer", "Computer Vision Enthusiast", "B.Tech ECE · Class of 2026"];
+  const ty = document.getElementById('ty'); let ri = 0, ci = 0, del = false;
+  (function tick(){ const w = roles[ri]; ty.textContent = w.slice(0, ci);
+    if(!del){ ci++; if(ci > w.length){ del = true; return setTimeout(tick, 1500); } }
+    else { ci--; if(ci === 0){ del = false; ri = (ri + 1) % roles.length; } }
+    setTimeout(tick, del ? 34 : 68); })();
+  /* ---------- skills marquee ---------- */
+  const skills = ["Python","SQL","Machine Learning","Deep Learning","Computer Vision","YOLOv8","OpenCV","PyTorch","CNNs","ResNet50","DSA","OOP","Power BI","Arduino"];
+  const track = document.getElementById('track');
+  track.innerHTML = skills.concat(skills).map(s => '<span class="chip">' + s + '</span>').join('');
+  /* ---------- 3D tilt + spotlight on cards ---------- */
+  if(matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.tilt').forEach(card => {
+      card.addEventListener('mousemove', e => { const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transform = 'perspective(900px) rotateY(' + ((x-.5)*7) + 'deg) rotateX(' + ((.5-y)*7) + 'deg)';
+        card.style.setProperty('--mx', x*100 + '%'); card.style.setProperty('--my', y*100 + '%');
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+    /* magnetic buttons */
+    document.querySelectorAll('.mag').forEach(b => {
+      b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect();
+        b.style.transform = 'translate(' + (e.clientX - r.left - r.width/2)*.18 + 'px,' + (e.clientY - r.top - r.height/2)*.3 + 'px)'; });
+      b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+    });
+  }
+  /* ---------- avatar surprise ---------- */
+  const msgs = ["Hello! 👋", "Welcome!", "Hire me! 🚀", "SKB"];
+  let mi = 0; document.getElementById('av').addEventListener('click', function(){
+    mi = (mi + 1) % msgs.length; this.textContent = msgs[mi]; this.style.fontSize = msgs[mi].length > 4 ? '1rem' : '2.1rem'; });
+  /* ---------- reveal on scroll + count-up ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => {
-    if(!e.isIntersecting) return;
-    e.target.classList.add('in');
+    if(!e.isIntersecting) return; e.target.classList.add('in');
     e.target.querySelectorAll('.count').forEach(el => {
       if(el.dataset.done) return; el.dataset.done = 1;
       const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0), t0 = performance.now();
@@ -177,7 +251,7 @@
         if(p < 1) requestAnimationFrame(step); })(t0);
     });
     io.unobserve(e.target);
-  }), {threshold: .18});
+  }), {threshold: .15});
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
 </body>
