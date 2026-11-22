@@ -6,9 +6,9 @@
 <title>Sai Koushik Bollu — Portfolio</title>
 <style>
   :root{
-    --bg:#060a13; --card:#0d1524e6; --line:#1e2c47; --txt:#e8eef7; --mut:#93a4bd;
-    --a1:#38bdf8; --a2:#818cf8; --a3:#34d399;
-    --grad:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc,#38bdf8);
+    --bg:#0a0d16; --card:#131022e6; --line:#2b2340; --txt:#e8eef7; --mut:#a49ec2;
+    --a1:#fb923c; --a2:#f59e0b; --a3:#34d399;
+    --grad:linear-gradient(90deg,#f97316,#f59e0b,#facc15,#f97316);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -16,21 +16,21 @@
   /* particle canvas + glow layers */
   #stars{position:fixed;inset:0;z-index:-3}
   .bg{position:fixed;inset:0;z-index:-4;background:
-    radial-gradient(700px 400px at 15% 10%, #1d4ed82e, transparent 60%),
-    radial-gradient(800px 500px at 85% 20%, #7c3aed26, transparent 60%),
-    radial-gradient(700px 600px at 50% 95%, #0596691f, transparent 60%), var(--bg)}
+    radial-gradient(700px 400px at 15% 10%, #ea580c30, transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, #f59e0b24, transparent 60%),
+    radial-gradient(700px 600px at 50% 95%, #7c2d1226, transparent 60%), var(--bg)}
   #glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-2;
-    background:radial-gradient(circle,#6366f12b,transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s;left:50%;top:30%}
+    background:radial-gradient(circle,#f9731629,transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s;left:50%;top:30%}
   .blob{position:fixed;border-radius:50%;filter:blur(75px);opacity:.32;z-index:-1;animation:drift 16s ease-in-out infinite alternate;will-change:transform}
-  .b1{width:340px;height:340px;background:#2563eb;top:-80px;left:-60px}
-  .b2{width:300px;height:300px;background:#7c3aed;top:32%;right:-90px;animation-delay:-6s}
-  .b3{width:260px;height:260px;background:#059669;bottom:-80px;left:35%;animation-delay:-11s}
+  .b1{width:340px;height:340px;background:#ea580c;top:-80px;left:-60px}
+  .b2{width:300px;height:300px;background:#f59e0b;top:32%;right:-90px;animation-delay:-6s}
+  .b3{width:260px;height:260px;background:#b45309;bottom:-80px;left:35%;animation-delay:-11s}
   @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(56px,40px) scale(1.14)}}
   /* scroll progress */
   #prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);background-size:200% 100%;animation:slide 5s linear infinite;z-index:99}
   @keyframes slide{to{background-position:200% 0}}
   /* nav */
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#060a13b8;border-bottom:1px solid var(--line)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#0a0d16b8;border-bottom:1px solid var(--line)}
   .navin{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
   .logo{font-weight:800;font-size:1.05rem;background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 6s linear infinite}
   nav a{color:var(--mut);text-decoration:none;margin-left:20px;font-size:.93rem;position:relative;transition:color .25s}
@@ -39,37 +39,37 @@
   .wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
   /* hero */
   header{text-align:center;padding:70px 0 26px}
-  .avatar{width:106px;height:106px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);border:3px solid #ffffff2e;box-shadow:0 0 0 6px #2563eb22,0 18px 40px #0009;animation:float 5s ease-in-out infinite;cursor:pointer;transition:transform .3s}
+  .avatar{width:106px;height:106px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#ea580c,#f59e0b);border:3px solid #ffffff2e;box-shadow:0 0 0 6px #ea580c22,0 18px 40px #0009;animation:float 5s ease-in-out infinite;cursor:pointer;transition:transform .3s}
   .avatar:hover{transform:scale(1.07) rotate(-3deg)}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   h1{font-size:2.75rem;line-height:1.15;background:var(--grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 7s linear infinite}
   .typed{font-size:1.2rem;color:#dbe7f5;margin-top:12px;min-height:1.7em}
-  .typed .cur{display:inline-block;width:2px;background:var(--a1);margin-left:2px;animation:blink 1s steps(1) infinite}
+  .typed .cur{display:inline-block;width:2px;background:#f97316;margin-left:2px;animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   .meta{color:var(--mut);margin-top:8px}
   .cta{margin-top:26px}
   .btn{display:inline-block;padding:11px 22px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95rem;margin:4px;transition:transform .25s,box-shadow .25s;will-change:transform}
   .btn:hover{transform:translateY(-3px)}
-  .btn.p{background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;box-shadow:0 10px 26px #2563eb45}
+  .btn.p{background:linear-gradient(90deg,#ea580c,#f59e0b);color:#fff;box-shadow:0 10px 26px #ea580c45}
   .btn.g{background:#ffffff10;color:#fff;border:1px solid var(--line)}
   .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:140px;transition:transform .3s,border-color .3s}
-  .stat:hover{transform:translateY(-5px) scale(1.03);border-color:var(--a2)}
-  .stat .num{font-size:1.55rem;font-weight:800;color:var(--a3)}
+  .stat:hover{transform:translateY(-5px) scale(1.03);border-color:#f59e0b}
+  .stat .num{font-size:1.55rem;font-weight:800;color:#fbbf24}
   .stat .lbl{font-size:.8rem;color:var(--mut)}
   /* skills marquee */
   .marquee{overflow:hidden;margin-top:40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
   .track{display:flex;gap:10px;width:max-content;animation:mq 26s linear infinite}
   .marquee:hover .track{animation-play-state:paused}
   @keyframes mq{to{transform:translateX(-50%)}}
-  .chip{background:#38bdf812;color:#7dd3fc;border:1px solid #38bdf838;border-radius:20px;padding:5px 14px;font-size:.85rem;white-space:nowrap}
+  .chip{background:#f9731612;color:#fdba74;border:1px solid #f9731638;border-radius:20px;padding:5px 14px;font-size:.85rem;white-space:nowrap}
   /* sections */
   h2{font-size:1.5rem;margin:52px 0 18px;display:flex;align-items:center;gap:12px}
   h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:22px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .35s,box-shadow .35s;will-change:transform}
   .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);background-size:200% 100%;opacity:0;transition:opacity .35s}
-  .card::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#818cf81f,transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
-  .card:hover{border-color:#35507e;box-shadow:0 24px 48px #000b}
+  .card::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#f59e0b1f,transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
+  .card:hover{border-color:#8a5a1e;box-shadow:0 24px 48px #000b}
   .card:hover::before{opacity:1;animation:slide 4s linear infinite}
   .card:hover::after{opacity:1}
   .card h3{font-size:1.25rem}
@@ -77,8 +77,8 @@
   ul.feat{margin:12px 0 0 20px;color:#c6d3e4}
   ul.feat li{margin:4px 0}
   .tags{margin-top:14px}
-  .tag{display:inline-block;background:#38bdf814;color:#7dd3fc;border:1px solid #38bdf83d;border-radius:20px;padding:3px 12px;font-size:.8rem;margin:3px 4px 3px 0;transition:transform .2s,background .2s;cursor:default}
-  .tag:hover{transform:scale(1.1) rotate(-2deg);background:#38bdf82e}
+  .tag{display:inline-block;background:#f9731614;color:#fdba74;border:1px solid #f973163d;border-radius:20px;padding:3px 12px;font-size:.8rem;margin:3px 4px 3px 0;transition:transform .2s,background .2s;cursor:default}
+  .tag:hover{transform:scale(1.1) rotate(-2deg);background:#f973162e}
   .metrics{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
   .metric{background:#0a1220;border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center;transition:transform .25s}
   .metric:hover{transform:scale(1.06)}
@@ -121,8 +121,7 @@
     </div>
     <div class="stats">
       <div class="stat rv"><div class="num"><span class="count" data-to="98.28" data-dec="2">0</span>%</div><div class="lbl">Accident Detection Accuracy</div></div>
-      <div class="stat rv"><div class="num"><span class="count" data-to="97.15" data-dec="2">0</span>%</div><div class="lbl">Precision</div></div>
-      <div class="stat rv"><div class="num"><span class="count" data-to="99.03" data-dec="2">0</span>%</div><div class="lbl">Recall</div></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="3" data-dec="0">0</span></div><div class="lbl">Projects Built</div></div>
       <div class="stat rv"><div class="num"><span class="count" data-to="7.94" data-dec="2">0</span></div><div class="lbl">B.Tech CGPA</div></div>
     </div>
     <div class="marquee rv"><div class="track" id="track"></div></div>
@@ -194,12 +193,12 @@
       if(p.x < 0 || p.x > W) p.vx *= -1; if(p.y < 0 || p.y > H) p.vy *= -1;
       const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
       if(d < 110 && d > 0){ p.x += dx/d*.7; p.y += dy/d*.7; }  /* particles react to cursor */
-      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fillStyle = '#7dd3fcbb'; cx.fill();
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fillStyle = '#fdba74cc'; cx.fill();
     }
     for(let i = 0; i < pts.length; i++) for(let j = i+1; j < pts.length; j++){
       const a = pts[i], b = pts[j], d = Math.hypot(a.x-b.x, a.y-b.y);
       if(d < 130){ cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y);
-        cx.strokeStyle = 'rgba(99,102,241,' + (0.16*(1 - d/130)) + ')'; cx.stroke(); }
+        cx.strokeStyle = 'rgba(245,158,11,' + (0.16*(1 - d/130)) + ')'; cx.stroke(); }
     }
     requestAnimationFrame(draw);
   })();
@@ -209,7 +208,7 @@
   addEventListener('scroll', () => { const h = document.documentElement;
     prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; }, {passive: true});
   /* ---------- typing effect ---------- */
-  const roles = ["Python Developer", "AI/ML Engineer", "Computer Vision Enthusiast", "B.Tech ECE · Class of 2026"];
+  const roles = ["Software Developer", "AI/ML Engineer"];
   const ty = document.getElementById('ty'); let ri = 0, ci = 0, del = false;
   (function tick(){ const w = roles[ri]; ty.textContent = w.slice(0, ci);
     if(!del){ ci++; if(ci > w.length){ del = true; return setTimeout(tick, 1500); } }
